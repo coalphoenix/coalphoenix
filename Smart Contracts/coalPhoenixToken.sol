@@ -25,8 +25,6 @@ contract coalPhoenixToken is ERC20, Ownable {
 
     }
 
-    //Owner Only
-
     function issueTokens(uint256 amount) public onlyOwner {
 
         _mint(msg.sender, amount);
@@ -40,8 +38,6 @@ contract coalPhoenixToken is ERC20, Ownable {
         _burn(msg.sender, amount);
         
     }
-
-    //Override
 
     function _transfer(address from, address to, uint256 amount) internal override {
 
@@ -62,15 +58,11 @@ contract coalPhoenixToken is ERC20, Ownable {
 
     }
 
-    // Getters
-
     function isExcludedFromFee(address wallet) public view returns (bool) {
 
         return _excludedWalletFee[wallet];
 
     }
-
-    // Setters
 
     function excludeFromFee(address wallet, bool toggle) public onlyOwner {
 
